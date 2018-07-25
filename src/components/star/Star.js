@@ -5,6 +5,7 @@ class Star extends Component {
         super(props);
 
         this.state = {
+            starList: [],
             star: {           
                 name: '',
                 role: '',
@@ -46,6 +47,10 @@ class Star extends Component {
         event.preventDefault();
         console.log(this.state.star); 
         this.setState({
+            starList:  [
+                ...this.state.starList,
+                this.state.star
+              ],
             star : {
                 name: '',
                 role: '',
@@ -57,15 +62,25 @@ class Star extends Component {
     
     
     render() {
+        
+        let starListItemArray = this.state.starList.map ((star, index) => {
+            return <li key={index}>{star.name} is famous for {star.role}. Their popularity rating is {star.popularity}</li>
+          })
+
+
         return (
             <div>
             <form onSubmit={this.handleClick}>
-            <p> {this.state.star.name} is famous for {this.state.star.role}. Their popularity rating is {this.state.star.popularity} </p>
+            {/* <p> {this.state.star.name} is famous for {this.state.star.role}. Their popularity rating is {this.state.star.popularity} </p> */}
             <input value={this.state.star.name} type="text" onChange={this.handleChangeFor('name')}/>
             <input value={this.state.star.role} type="text" onChange={this.handleChangeFor('role')}/>
             <input value={this.state.star.popularity} type="number" onChange={this.handleChangeFor('popularity')}/>
             <input type="submit" value="Click me"/>
             </form>
+            <ul className="App-intro">
+                {starListItemArray}
+            </ul>
+
             </div>
         )
     }
