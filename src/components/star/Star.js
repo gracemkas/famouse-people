@@ -45,6 +45,13 @@ class Star extends Component {
     handleClick = (event) => {
         event.preventDefault();
         console.log(this.state.star); 
+        this.setState({
+            star : {
+                name: '',
+                role: '',
+                popularity: ''
+            }
+        })
     }
     
     
