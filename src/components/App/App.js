@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../header/Header';
 import NewStar from '../NewStar/NewStar';
+import StarList from '../StarList/StarList';
 import './App.css';
 
 class App extends Component {
@@ -9,8 +10,8 @@ class App extends Component {
 
     this.state = {
         starList: [{
-            name: 'Sean',
-            role: 'being a loser',
+            name: 'Someone',
+            role: 'Something',
             popularity: 1
         }],
         star: {           
@@ -57,6 +58,7 @@ this.setState({
           newForm={this.state.star} 
           handleChangeFor={this.handleChangeFor}
           handleClick={this.handleClick}/> 
+        <StarList list={this.state.starList}/>
       </div>
     );
   }
